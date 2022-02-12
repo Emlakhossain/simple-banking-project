@@ -1,15 +1,15 @@
-function getInputValue() {
-    const depositField = document.getElementById('deposit-input');
-    const depositAmtText = depositField.value;
-    const depositAmount = parseFloat(depositAmtText);
-    depositField.value = '';
-    return depositAmount;
+function getInputValue(inputId) {
+    const inputField = document.getElementById(inputId);
+    const inputAmountText = inputField.value;
+    const amountValue = parseFloat(inputAmountText);
+    inputField.value = '';
+    return amountValue;
 
 }
 
 // add deposit button
 document.getElementById('deposit-button').addEventListener('click', function () {
-    const depositAmount = getInputValue();
+    const depositAmount = getInputValue('deposit-input');
 
     //  add with previous value
     const depositTotal = document.getElementById('deposit-total');
@@ -29,12 +29,12 @@ document.getElementById('deposit-button').addEventListener('click', function () 
 // handle withdrow event handler
 document.getElementById('withdrow-button').addEventListener('click', function () {
     // witgdraw input field
-    const withdrowInputField = document.getElementById('withdrow-input-field');
-    const withdrowAmtText = withdrowInputField.value;
-    // console.log(withdrowInputField)
-    const withdrowAmt = parseFloat(withdrowAmtText);
+    // const withdrowInputField = document.getElementById('withdrow-input-field');
+    // const withdrowAmtText = withdrowInputField.value;
+    // // console.log(withdrowInputField)
+    // const withdrowAmt = parseFloat(withdrowAmtText);
     // console.log(withdrowAmt)
-
+    const withdrowAmt = getInputValue('withdrow-input-field');
     // withdraw total 
     const withdrawTotal = document.getElementById('withdraw-total');
     const withdrawTotalText = withdrawTotal.innerText;
@@ -43,7 +43,7 @@ document.getElementById('withdrow-button').addEventListener('click', function ()
     withdrawTotal.innerText = withdrawTotalAmt + withdrowAmt;
 
     // clear withdrow field
-    withdrowInputField.value = '';
+    // withdrowInputField.value = '';
 
     // blance update
     const blanceTotal = document.getElementById('blance-total');
