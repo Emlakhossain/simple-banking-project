@@ -1,26 +1,29 @@
+function getInputValue() {
+    const depositField = document.getElementById('deposit-input');
+    const depositAmtText = depositField.value;
+    const depositAmount = parseFloat(depositAmtText);
+    depositField.value = '';
+    return depositAmount;
 
+}
 
 // add deposit button
 document.getElementById('deposit-button').addEventListener('click', function () {
-    // Add new amount
-    const depositField = document.getElementById('deposit-input');
-    const depositAmtText = depositField.value;
-    const newDepositAmt = parseFloat(depositAmtText);
-    // console.log(depositAmt);
+    const depositAmount = getInputValue();
 
     //  add with previous value
     const depositTotal = document.getElementById('deposit-total');
     const previousDepositText = depositTotal.innerText;
     const previousDepositAmt = parseFloat(previousDepositText);
-    depositTotal.innerText = previousDepositAmt + newDepositAmt;
-    depositField.value = '';
+    depositTotal.innerText = previousDepositAmt + depositAmount;
+
     //  total blance total...........
     const blanceTotal = document.getElementById('blance-total');
     const blanceTotalText = blanceTotal.innerText;
     const previousBlanceTotal = parseFloat(blanceTotalText);
     // const updateBlanceTotal = previousBlanceTotal + newDepositTotal;
 
-    blanceTotal.innerText = previousBlanceTotal + newDepositAmt;
+    blanceTotal.innerText = previousBlanceTotal + depositAmount;
 
 });
 // handle withdrow event handler
